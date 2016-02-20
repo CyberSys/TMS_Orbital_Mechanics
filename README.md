@@ -8,8 +8,8 @@ Special Thanks to 'Crzyrndm', 'Starwaster', 'wasml' and 'artwhaley' for their he
 
 Current Concept.
 ----------------
-- To populate the system with Stargates.
-- Gates to begin 'inactive' needing the playing to find the gates on other bodies and manually activate them.
+- To populate the system bodies with Stargates (one per body).
+- Gates to begin 'inactive' needing the player to find the gates on other bodies and manually activate them.
 - Gate only to be activated when EVA Kerbal or Rover bound Kerbal is current active 'vessel' and only when in a certain range of the    gate
 - Gates to be large enough to transport 3.75m parts (Needs to be tested in terms of scale relationship between Gate and Kerbal in       relation to TV scale.
 
