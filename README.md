@@ -45,6 +45,13 @@ Require Modules :
   http://forum.kerbalspaceprogram.com/index.php?/topic/60770-10x-part-plugin-parameciumkids-jump-drive-06-compatibility-update/
 - Stargate Detector Module
 
+Current Questions :
+-------------------
+- WHY MY CODE NO WORK!?!?!!?!  ;-P (I suspect this will be asked a lot)
+- How to translate orbit/position data from a save file to the dynamically created Gates (coded config data value = Save data value)
+- Is it possible to add a Module to an EVA Kerbal as it becomes EVA?
+- Is it possible to add a Module to a Kerbal Piloted Rover?
+
 Possible Expansions to Mod
 --------------------------
 - Expansion of the Gate system to support 'Galaxy' style mods. (Extra planets etc)
