@@ -100,7 +100,6 @@ namespace TMS_Stargate
             Debug.Log("TMS ORBITAL MECHANICS - Get Parts");
             
             ConfigNode[] stargateParts = stargateList[0].GetNodes("PART");
-
             Debug.Log("TMS ORBITAL MECHANICS - Stargate Name " + stargateList[0].GetValue("ship"));
             Debug.Log("TMS ORBITAL MECHANICS - Stargate Description " + stargateList[0].GetValue("description"));
             Debug.Log("TMS ORBITAL MECHANICS - Part Name" + stargateParts[0].GetValue("part"));
@@ -112,10 +111,23 @@ namespace TMS_Stargate
             Debug.Log("TMS ORBITAL MECHANICS - Defining Parameters config node");
 
             //Define our parameters node (not actually sure what this does if honest)
-            ConfigNode[] parameters = new ConfigNode[] { ProtoVessel.CreateDiscoveryNode(DiscoveryLevels.Unowned, UntrackedObjectClass.A, 50000 * 2.0, 50000 * 2.0) };
+            ConfigNode[] parameters = new ConfigNode[] { ProtoVessel.CreateDiscoveryNode(DiscoveryLevels.Unowned, UntrackedObjectClass.A, double.PositiveInfinity, double.PositiveInfinity) };
 
             //Assign our orbit details to our actual orbit
             Debug.Log("TMS ORBITAL MECHANICS - Creating Orbit details");
+
+            //double orbitINC = 0;
+            //double orbitE = 1;
+            //double orbitSMA = 0;
+            //double orbitLAN = 231.541810103637;
+            //double orbitW = 0;
+            //double orbitMEP = 0;
+            //double orbitT = 92.3199999999988;
+            //CelestialBody orbitBody = new CelestialBody();
+            //orbitBody = gateBody;
+
+
+            //Orbit orbit = new Orbit(orbitINC, orbitE, orbitSMA, orbitLAN, orbitW, orbitMEP, orbitT, orbitBody);
             Orbit orbit = Orbit.CreateRandomOrbitAround(this.gateBody, lowOrbit, highOrbit);
             
             //Define and add our details to the ProtoVessel
@@ -128,12 +140,34 @@ namespace TMS_Stargate
                                                                        parameters
                                                                        );
 
+            Vector3 pvNormal = new Vector3(0.0006699468f,0.9999998f,0.0005255585f);
+            Quaternion newRotation = new Quaternion();
+            newRotation.Set(0.1023515f, 0.7012386f, -0.7000816f, 0.08760411f);
+
             //Add our ProtoVessel to the game
             Debug.Log("TMS ORBITAL MECHANICS - Adding our Gate to the game(I think)");
             ProtoVessel protoVessel = HighLogic.CurrentGame.AddVessel(protoVesselNode);
 
-        }
+            Debug.Log("TMS ORBITAL MECHANICS - Applying positional information from save file");
 
+            Debug.Log("TMS ORBITAL MECHANICS - Setting Landed to True");
+            protoVessel.landed = true;
+            Debug.Log("TMS ORBITAL MECHANICS - Define LastUT (I think)");
+            protoVessel.lastUT = 92.3199999999988f;
+            Debug.Log("TMS ORBITAL MECHANICS - Define Latitude");
+            protoVessel.latitude = -0.0879773334671755f;
+            Debug.Log("TMS ORBITAL MECHANICS - Define Longitude");
+            protoVessel.longitude = 285.442624223432f;
+            Debug.Log("TMS ORBITAL MECHANICS - Defining Altitude");
+            protoVessel.altitude = 70.805926067871f;
+            Debug.Log("TMS ORBITAL MECHANICS - Defining Height");
+            protoVessel.height = 3.103734f;
+            Debug.Log("TMS ORBITAL MECHANICS - Defining the 'Normal'");
+            protoVessel.normal = pvNormal;
+            Debug.Log("TMS ORBITAL MECHANICS - Defining the rotation");
+            protoVessel.rotation = newRotation;
+
+        }
 
         protected void OnLoad(ConfigNode node)
         {
@@ -154,11 +188,6 @@ namespace TMS_Stargate
             node.AddValue("stationName", this.stargateName);
             node.AddValue("stationID", this.stargateID);
         }
-
-
-
-
-
 
     }
 }
